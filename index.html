@@ -49,9 +49,10 @@
   <section class="hero" id="hero">
     <img src="assets/images/hero.png" alt="" class="hero__bg" id="hero-bg">
     <div class="hero__overlay"></div>
+    <canvas id="particles-canvas"></canvas>
 
     <div class="container hero__content">
-      <span class="hero__badge reveal reveal-delay-1">Coaching & Développement personnel</span>
+      <span class="hero__badge reveal reveal-delay-1">&#11088; +200 femmes accompagnées</span>
       <h1 class="hero__title reveal reveal-delay-2">Révèle la femme<br>que tu es vraiment</h1>
       <p class="hero__subtitle reveal reveal-delay-3">
         Tu sens qu'il est temps de te reconnecter à toi-même, d'oser prendre ta place
@@ -77,30 +78,30 @@
     <div class="container">
       <div class="about__grid">
 
-        <div class="about__image-wrapper reveal">
-          <img src="assets/images/about.png" alt="Sofia Laurent, coach en développement personnel" class="about__image">
+        <div class="about__image-wrapper reveal-left">
+          <img src="assets/images/about.png" alt="Sofia Laurent, coach en développement personnel" class="about__image" loading="lazy">
         </div>
 
-        <div class="about__content">
-          <span class="section__tag reveal">Mon histoire</span>
-          <h2 class="section__title reveal" style="text-align:left;">L'accompagnement qui change tout</h2>
+        <div class="about__content reveal-right">
+          <span class="section__tag">Mon histoire</span>
+          <h2 class="section__title" style="text-align:left;">L'accompagnement qui change tout</h2>
 
-          <p class="about__name reveal">Sofia Laurent</p>
-          <p class="about__role reveal">Coach certifiée en développement personnel</p>
+          <p class="about__name">Sofia Laurent</p>
+          <p class="about__role">Coach certifiée en développement personnel</p>
 
-          <p class="about__text reveal">
+          <p class="about__text">
             Pendant des années, j'ai porté un masque. Celui de la femme parfaite,
             toujours souriante, toujours performante. Jusqu'au jour où j'ai décidé
             de me choisir. Cette quête intérieure a transformé ma vie — et aujourd'hui,
             j'accompagne les femmes qui veulent vivre la même révolution douce.
           </p>
-          <p class="about__text reveal">
+          <p class="about__text">
             Formée en coaching holistique, PNL et intelligence émotionnelle,
             je crée un espace bienveillant où tu peux déposer tes peurs,
             clarifier ta vision et passer à l'action avec confiance.
           </p>
 
-          <div class="about__values reveal">
+          <div class="about__values">
             <span class="about__value-tag"><i data-lucide="heart"></i> Bienveillance</span>
             <span class="about__value-tag"><i data-lucide="compass"></i> Authenticité</span>
             <span class="about__value-tag"><i data-lucide="flame"></i> Puissance</span>
@@ -132,7 +133,7 @@
        Hover : scale(1.03) + ombre dorée.
        ============================================================ -->
   <section class="services" id="services">
-    <img src="assets/images/services.jpg" alt="" class="services__bg">
+    <img src="assets/images/services.jpg" alt="" class="services__bg" loading="lazy">
     <div class="services__overlay"></div>
 
     <div class="container services__content">
@@ -146,7 +147,7 @@
       </div>
 
       <div class="services__grid">
-        <div class="service-card reveal">
+        <div class="service-card reveal reveal-cascade-1">
           <div class="service-card__icon"><i data-lucide="gem"></i></div>
           <h3 class="service-card__title">Coaching individuel</h3>
           <p class="service-card__text">
@@ -158,7 +159,7 @@
           </a>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal reveal-cascade-2">
           <div class="service-card__icon"><i data-lucide="users"></i></div>
           <h3 class="service-card__title">Programme groupe</h3>
           <p class="service-card__text">
@@ -170,7 +171,7 @@
           </a>
         </div>
 
-        <div class="service-card reveal">
+        <div class="service-card reveal reveal-cascade-3">
           <div class="service-card__icon"><i data-lucide="sun"></i></div>
           <h3 class="service-card__title">Retraite bien-être</h3>
           <p class="service-card__text">
@@ -226,11 +227,9 @@
 
       <div class="testimonials__grid">
 
-        <div class="testimonial-card reveal">
+        <div class="testimonial-card reveal-rotate">
           <span class="testimonial-card__quote">"</span>
-          <div class="testimonial-card__stars">
-            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
-          </div>
+          <div class="testimonial-card__stars-gold">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonial-card__text">
             Sofia a cette capacité rare de te faire sentir vue et entendue.
             En 3 mois de coaching, j'ai retrouvé une confiance que je pensais
@@ -245,11 +244,9 @@
           </div>
         </div>
 
-        <div class="testimonial-card reveal">
+        <div class="testimonial-card reveal-rotate">
           <span class="testimonial-card__quote">"</span>
-          <div class="testimonial-card__stars">
-            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
-          </div>
+          <div class="testimonial-card__stars-gold">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonial-card__text">
             La retraite bien-être a été un tournant dans ma vie. J'y suis arrivée
             épuisée, perdue, et j'en suis repartie avec une clarté que je n'avais
@@ -264,11 +261,9 @@
           </div>
         </div>
 
-        <div class="testimonial-card reveal">
+        <div class="testimonial-card reveal-rotate">
           <span class="testimonial-card__quote">"</span>
-          <div class="testimonial-card__stars">
-            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
-          </div>
+          <div class="testimonial-card__stars-gold">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonial-card__text">
             Le programme groupe m'a offert bien plus qu'un accompagnement :
             une vraie sororité. Guidée par Sofia, j'ai enfin osé quitter un job
@@ -375,6 +370,24 @@
 
         </form>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA FINAL — Bandeau vendeur avant le footer
+       ============================================================ -->
+  <section class="cta-final">
+    <div class="container">
+      <h2 class="cta-final__title reveal">Prête à transformer ta vie ?</h2>
+      <p class="cta-final__text reveal">
+        Rejoins les 200+ femmes qui ont osé se choisir.
+        Ton premier appel découverte est offert.
+      </p>
+      <a href="#contact" class="btn reveal">
+        <i data-lucide="sparkles"></i>
+        Réserver mon appel gratuit
+      </a>
     </div>
   </section>
 

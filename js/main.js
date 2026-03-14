@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
     { threshold: 0.15 }
   );
 
-  /* On lance l'observation sur tous les éléments .reveal */
-  document.querySelectorAll('.reveal').forEach(function (el) {
+  /* On lance l'observation sur tous les éléments animés */
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-rotate').forEach(function (el) {
     revealObserver.observe(el);
   });
 
@@ -209,5 +209,62 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = '';
     });
   });
+
+
+  /* ============================================================
+     6. PARTICULES LÉGÈRES — Canvas Hero
+     ============================================================
+     30 particules subtiles et dorées qui flottent lentement
+     dans le Hero. Effet premium très discret.
+     Désactivé sur mobile (< 768px) et si prefers-reduced-motion.
+     ============================================================ */
+
+  var canvas = document.getElementById('particles-canvas');
+  if (canvas && window.innerWidth >= 768 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var ctx = canvas.getContext('2d');
+    var particles = [];
+    var maxParticles = 30;
+
+    function resizeCanvas() {
+      var hero = document.querySelector('.hero');
+      canvas.width = hero.offsetWidth;
+      canvas.height = hero.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    /* Créer les particules avec positions et vitesses aléatoires */
+    for (var i = 0; i < maxParticles; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.5,
+        dx: (Math.random() - 0.5) * 0.3,
+        dy: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.3 + 0.1
+      });
+    }
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (var j = 0; j < particles.length; j++) {
+        var p = particles[j];
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(201, 160, 132, ' + p.opacity + ')';
+        ctx.fill();
+
+        /* Déplacement lent */
+        p.x += p.dx;
+        p.y += p.dy;
+
+        /* Rebond sur les bords */
+        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      }
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+  }
 
 });

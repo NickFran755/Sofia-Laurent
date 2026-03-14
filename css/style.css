@@ -100,6 +100,7 @@ ul, ol { list-style: none; }
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
+  overflow-x: hidden;
 }
 
 body {
@@ -146,6 +147,8 @@ img {
 /* Section standard */
 .section {
   padding: var(--space-3xl) 0;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .section--surface {
   background-color: var(--surface);
@@ -216,6 +219,95 @@ img {
   50%      { transform: scale(1.05); }
 }
 
+/* Gradient animé lent en boucle sur l'overlay du Hero */
+@keyframes heroGradient {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* --- Photo zoom subtil au hover --- */
+.about__image-wrapper { overflow: hidden; border-radius: var(--radius-lg); }
+.about__image {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.about__image-wrapper:hover .about__image { transform: scale(1.03); }
+
+/* --- Liens navigation : underline animé gauche → droite --- */
+.header__nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+.header__nav-link:hover::after { width: 100%; }
+
+/* --- Icônes Lucide : scale subtil au hover --- */
+.service-card__icon {
+  transition: transform 0.3s ease;
+}
+.service-card:hover .service-card__icon { transform: scale(1.1) rotate(5deg); }
+.footer__social:hover i { transform: scale(1.15); }
+.footer__social i { transition: transform 0.3s ease; }
+
+/* --- Animations directionnelles pour about --- */
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-left.is-visible { opacity: 1; transform: translateX(0); }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-right.is-visible { opacity: 1; transform: translateX(0); }
+
+/* --- Témoignages : fade-in + rotateX --- */
+.reveal-rotate {
+  opacity: 0;
+  transform: perspective(800px) rotateX(10deg) translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-rotate.is-visible {
+  opacity: 1;
+  transform: perspective(800px) rotateX(0deg) translateY(0);
+}
+
+/* --- Service cards : cascade delay (ajouté par JS) --- */
+.service-card.reveal-cascade-1 { transition-delay: 0s; }
+.service-card.reveal-cascade-2 { transition-delay: 0.1s; }
+.service-card.reveal-cascade-3 { transition-delay: 0.2s; }
+
+/* --- Testimonial hover subtil --- */
+.testimonial-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* --- Étoiles dorées témoignages --- */
+.testimonial-card__stars-gold {
+  display: flex;
+  gap: 2px;
+  margin-bottom: var(--space-sm);
+  font-size: 1rem;
+  color: #D4A853;
+  letter-spacing: 2px;
+}
+
 
 /* ============================================================
    3. HEADER GLASSMORPHISM
@@ -234,12 +326,13 @@ img {
   background: transparent;
 }
 
-/* Quand on scrolle, le header devient un verre dépoli */
+/* Quand on scrolle, le header devient un verre dépoli renforcé */
 .header.scrolled {
   background: rgba(250, 247, 244, 0.72);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(232, 224, 216, 0.5);
+  box-shadow: 0 1px 12px rgba(44, 36, 32, 0.06);
 }
 
 .header__inner {
@@ -358,12 +451,15 @@ img {
   width: 100%;
   height: 100%;
   background: linear-gradient(
-    to right,
+    135deg,
     rgba(250, 247, 244, 0.95) 0%,
-    rgba(250, 247, 244, 0.85) 35%,
-    rgba(250, 247, 244, 0.4) 70%,
-    rgba(250, 247, 244, 0.15) 100%
+    rgba(242, 237, 232, 0.88) 25%,
+    rgba(250, 247, 244, 0.82) 50%,
+    rgba(201, 160, 132, 0.15) 75%,
+    rgba(250, 247, 244, 0.1) 100%
   );
+  background-size: 300% 300%;
+  animation: heroGradient 12s ease infinite;
   z-index: 1;
 }
 
@@ -433,33 +529,62 @@ img {
   border: 2px solid transparent;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: all var(--transition-base);
+  transition: all 0.3s ease;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
+/* Bouton principal — gradient qui s'inverse au hover + élévation + ombre dorée */
 .btn-primary {
-  background: var(--primary);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
   color: var(--white);
-  border-color: var(--primary);
+  border-color: transparent;
 }
 .btn-primary:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--accent), var(--primary));
   color: var(--white);
   transform: translateY(-2px);
-  box-shadow: var(--shadow-gold);
+  box-shadow: 0 8px 24px rgba(201, 160, 132, 0.4);
 }
 
+/* Bouton outline — remplissage progressif de gauche à droite */
 .btn-outline {
   background: transparent;
   color: var(--primary);
   border-color: var(--primary);
 }
-.btn-outline:hover {
+.btn-outline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
   background: var(--primary);
+  transition: width 0.3s ease;
+  z-index: -1;
+  border-radius: var(--radius-pill);
+}
+.btn-outline:hover::before { width: 100%; }
+.btn-outline:hover {
   color: var(--white);
   transform: translateY(-2px);
 }
+
+/* Pulse pour le CTA "Réserver un appel" dans le header */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 160, 132, 0.5); }
+  50%      { box-shadow: 0 0 0 10px rgba(201, 160, 132, 0); }
+}
+.header__cta {
+  animation: pulse 2.5s ease-in-out infinite;
+}
+.header__cta:hover { animation: none; }
+
+/* Curseur pointer sur tous les éléments cliquables */
+a, button, [role="button"], .service-card__link, .btn { cursor: pointer; }
 
 
 /* ============================================================
@@ -553,7 +678,7 @@ img {
    ============================================================ */
 
 .quote-section {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-3xl) 20px;
   background: var(--surface);
   text-align: center;
 }
@@ -597,7 +722,7 @@ img {
 
 .services {
   position: relative;
-  padding: var(--space-4xl) 0;
+  padding: var(--space-4xl) 20px;
   overflow: hidden;
 }
 
@@ -631,7 +756,7 @@ img {
   gap: var(--space-lg);
 }
 
-/* Carte service — effet hover premium */
+/* Carte service — élévation premium au hover */
 .service-card {
   background: var(--white);
   border-radius: var(--radius-card);
@@ -639,10 +764,11 @@ img {
   box-shadow: var(--shadow-card);
   border: 1px solid var(--border);
   transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 .service-card:hover {
-  transform: scale(1.03);
-  box-shadow: var(--shadow-gold);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(201, 160, 132, 0.3);
   border-color: rgba(201, 160, 132, 0.3);
 }
 
@@ -692,7 +818,7 @@ img {
    ============================================================ */
 
 .stats {
-  padding: var(--space-3xl) 0;
+  padding: var(--space-3xl) 20px;
   background: var(--text);
   color: var(--white);
 }
@@ -999,13 +1125,80 @@ img {
 
 
 /* ============================================================
+   11b. CTA FINAL — Bandeau pleine largeur avant le footer
+   ============================================================ */
+
+.cta-final {
+  padding: var(--space-4xl) 20px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-final::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+  animation: heroGradient 8s ease infinite;
+}
+.cta-final__title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+.cta-final__text {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.05rem;
+  margin-bottom: var(--space-xl);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  position: relative;
+}
+.cta-final .btn {
+  background: var(--white);
+  color: var(--accent);
+  border-color: var(--white);
+  font-weight: 700;
+  position: relative;
+}
+.cta-final .btn:hover {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Particles canvas */
+#particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.hero__content { position: relative; z-index: 3; }
+
+
+/* ============================================================
    12. FOOTER
    ============================================================ */
 
 .footer {
   background: var(--text);
   color: var(--border);
-  padding: var(--space-2xl) 0;
+  padding: var(--space-2xl) 20px;
 }
 .footer__inner {
   display: flex;
@@ -1061,12 +1254,47 @@ img {
 
 
 /* ============================================================
+   12b. MOBILE CONSTRAINTS (< 768px)
+   Titres limités, images contraintes, grilles en 1 colonne.
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .section__title { font-size: 1.75rem; }
+  .hero__title { font-size: 2.2rem; }
+  .quote__text { font-size: 1.35rem; }
+  .stat__number { font-size: 2rem; }
+
+  /* Grilles stats en 3 colonnes compactes sur mobile */
+  .stats__grid { gap: var(--space-sm); }
+  .stat__label { font-size: 0.7rem; }
+
+  /* Images ne dépassent jamais l'écran */
+  .about__image-wrapper { max-width: 100%; }
+  .service-card { padding: var(--space-lg) var(--space-md); }
+
+  /* Hero content padding latéral */
+  .hero__content { padding-left: 20px; padding-right: 20px; }
+}
+
+/* Très petits écrans (iPhone SE, 375px) */
+@media (max-width: 390px) {
+  .section__title { font-size: 1.5rem; }
+  .hero__title { font-size: 1.9rem; }
+  .quote__text { font-size: 1.2rem; }
+  .stat__number { font-size: 1.75rem; }
+  .hero__badge { font-size: 0.6rem; letter-spacing: 1px; }
+  .hero__subtitle { font-size: 0.9rem; }
+  .btn { font-size: 0.7rem; padding: 12px 20px; }
+}
+
+
+/* ============================================================
    13. RESPONSIVE — TABLETTE (768px)
    ============================================================ */
 
 @media (min-width: 768px) {
 
-  .section { padding: var(--space-4xl) 0; }
+  .section { padding: var(--space-4xl) 20px; }
   .section__title { font-size: 2.5rem; }
 
   .container {
@@ -1145,7 +1373,7 @@ img {
 
 @media (min-width: 1024px) {
 
-  .section { padding: var(--space-5xl) 0; }
+  .section { padding: var(--space-5xl) 20px; }
   .section__title { font-size: 2.8rem; }
 
   /* Hero : titre très grand */
@@ -1176,4 +1404,29 @@ img {
 
   /* À propos : espacement plus généreux */
   .about__grid { gap: var(--space-4xl); }
+
+  /* CTA final : titre plus grand */
+  .cta-final__title { font-size: 2.8rem; }
+}
+
+
+/* ============================================================
+   16. ACCESSIBILITÉ — prefers-reduced-motion
+   Désactive TOUTES les animations si l'utilisateur le préfère.
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-rotate {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero__overlay { animation: none !important; }
+  .header__cta { animation: none !important; }
+  .form__submit { animation: none !important; }
 }
