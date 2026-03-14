@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sofia Laurent — Coach en développement personnel. Révèle la femme que tu es vraiment. Coaching individuel, programmes groupe et retraites bien-être.">
+  <title>Sofia Laurent — Coach en développement personnel</title>
+
+  <!-- Feuille de styles unique -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Lucide Icons via CDN — icônes SVG légères et élégantes -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+</head>
+<body>
+
+
+  <!-- ============================================================
+       HEADER — Glassmorphism (verre dépoli)
+       Transparent au départ → flou + fond semi-transparent au scroll.
+       ============================================================ -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">Sofia Laurent</a>
+
+      <button class="header__burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="header__nav" id="nav">
+        <a href="#about" class="header__nav-link">À propos</a>
+        <a href="#services" class="header__nav-link">Services</a>
+        <a href="#testimonials" class="header__nav-link">Témoignages</a>
+        <a href="#contact" class="header__nav-link">Contact</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-primary header__cta">Réserver un appel</a>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       HERO — Plein écran avec hero.png + overlay gradient
+       Animation séquentielle : badge → titre → sous-titre → boutons.
+       L'image a un effet parallaxe subtil géré par JS.
+       ============================================================ -->
+  <section class="hero" id="hero">
+    <img src="assets/images/hero.png" alt="" class="hero__bg" id="hero-bg">
+    <div class="hero__overlay"></div>
+
+    <div class="container hero__content">
+      <span class="hero__badge reveal reveal-delay-1">Coaching & Développement personnel</span>
+      <h1 class="hero__title reveal reveal-delay-2">Révèle la femme<br>que tu es vraiment</h1>
+      <p class="hero__subtitle reveal reveal-delay-3">
+        Tu sens qu'il est temps de te reconnecter à toi-même, d'oser prendre ta place
+        et de vivre en accord avec qui tu es profondément ? Je t'accompagne dans cette
+        transformation avec douceur et puissance.
+      </p>
+      <div class="hero__actions reveal reveal-delay-4">
+        <a href="#contact" class="btn btn-primary">
+          <i data-lucide="sparkles"></i>
+          Commence ta transformation
+        </a>
+        <a href="#about" class="btn btn-outline">Découvrir mon approche</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       À PROPOS — 2 colonnes : image gauche + texte droite
+       about.png avec border-radius 24px et ombre colorée dorée.
+       ============================================================ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about__grid">
+
+        <div class="about__image-wrapper reveal">
+          <img src="assets/images/about.png" alt="Sofia Laurent, coach en développement personnel" class="about__image">
+        </div>
+
+        <div class="about__content">
+          <span class="section__tag reveal">Mon histoire</span>
+          <h2 class="section__title reveal" style="text-align:left;">L'accompagnement qui change tout</h2>
+
+          <p class="about__name reveal">Sofia Laurent</p>
+          <p class="about__role reveal">Coach certifiée en développement personnel</p>
+
+          <p class="about__text reveal">
+            Pendant des années, j'ai porté un masque. Celui de la femme parfaite,
+            toujours souriante, toujours performante. Jusqu'au jour où j'ai décidé
+            de me choisir. Cette quête intérieure a transformé ma vie — et aujourd'hui,
+            j'accompagne les femmes qui veulent vivre la même révolution douce.
+          </p>
+          <p class="about__text reveal">
+            Formée en coaching holistique, PNL et intelligence émotionnelle,
+            je crée un espace bienveillant où tu peux déposer tes peurs,
+            clarifier ta vision et passer à l'action avec confiance.
+          </p>
+
+          <div class="about__values reveal">
+            <span class="about__value-tag"><i data-lucide="heart"></i> Bienveillance</span>
+            <span class="about__value-tag"><i data-lucide="compass"></i> Authenticité</span>
+            <span class="about__value-tag"><i data-lucide="flame"></i> Puissance</span>
+            <span class="about__value-tag"><i data-lucide="leaf"></i> Douceur</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       GRANDE CITATION — Séparateur visuel élégant
+       ============================================================ -->
+  <section class="quote-section">
+    <div class="container">
+      <div class="quote__line reveal"></div>
+      <blockquote class="quote__text reveal">
+        Le plus beau voyage que tu puisses entreprendre
+        est celui qui te ramène à toi-même.
+      </blockquote>
+      <p class="quote__author reveal">Sofia Laurent</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SERVICES — 3 cartes sur fond image (services.jpg)
+       Hover : scale(1.03) + ombre dorée.
+       ============================================================ -->
+  <section class="services" id="services">
+    <img src="assets/images/services.jpg" alt="" class="services__bg">
+    <div class="services__overlay"></div>
+
+    <div class="container services__content">
+      <div class="text-center">
+        <span class="section__tag reveal">Accompagnements</span>
+        <h2 class="section__title reveal">Mes offres de coaching</h2>
+        <p class="section__subtitle reveal">
+          Chaque femme est unique. C'est pourquoi je propose trois formats
+          adaptés à ton rythme, tes besoins et ta personnalité.
+        </p>
+      </div>
+
+      <div class="services__grid">
+        <div class="service-card reveal">
+          <div class="service-card__icon"><i data-lucide="gem"></i></div>
+          <h3 class="service-card__title">Coaching individuel</h3>
+          <p class="service-card__text">
+            Des séances 1:1 sur-mesure pour plonger au cœur de ce qui te bloque,
+            retrouver ta confiance et construire la vie qui te ressemble vraiment.
+          </p>
+          <a href="#contact" class="service-card__link">
+            En savoir plus <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon"><i data-lucide="users"></i></div>
+          <h3 class="service-card__title">Programme groupe</h3>
+          <p class="service-card__text">
+            Rejoins un cercle de femmes inspirantes pour avancer ensemble.
+            Ateliers collectifs de 8 semaines mêlant exercices pratiques et sororité.
+          </p>
+          <a href="#contact" class="service-card__link">
+            En savoir plus <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-card__icon"><i data-lucide="sun"></i></div>
+          <h3 class="service-card__title">Retraite bien-être</h3>
+          <p class="service-card__text">
+            Une parenthèse enchantée de 3 à 5 jours. Méditation, mouvement,
+            coaching profond et reconnexion à la nature. Repars transformée.
+          </p>
+          <a href="#contact" class="service-card__link">
+            En savoir plus <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CHIFFRES CLÉS — 3 compteurs animés au scroll
+       Les nombres s'incrémentent de 0 à la valeur finale
+       quand la section entre dans le viewport (JS).
+       ============================================================ -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="reveal">
+          <div class="stat__number" data-target="200" data-suffix="+">0</div>
+          <p class="stat__label">Femmes accompagnées</p>
+        </div>
+        <div class="reveal">
+          <div class="stat__number" data-target="95" data-suffix="%">0</div>
+          <p class="stat__label">Taux de satisfaction</p>
+        </div>
+        <div class="reveal">
+          <div class="stat__number" data-target="5" data-suffix=" ans">0</div>
+          <p class="stat__label">D'expérience</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TÉMOIGNAGES — 3 avis clients
+       ============================================================ -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="text-center">
+        <span class="section__tag reveal">Témoignages</span>
+        <h2 class="section__title reveal">Ce qu'elles en disent</h2>
+        <p class="section__subtitle reveal">
+          Des femmes comme toi ont osé franchir le pas. Voici leurs mots.
+        </p>
+      </div>
+
+      <div class="testimonials__grid">
+
+        <div class="testimonial-card reveal">
+          <span class="testimonial-card__quote">"</span>
+          <div class="testimonial-card__stars">
+            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+          </div>
+          <p class="testimonial-card__text">
+            Sofia a cette capacité rare de te faire sentir vue et entendue.
+            En 3 mois de coaching, j'ai retrouvé une confiance que je pensais
+            perdue à jamais. Aujourd'hui, je m'affirme avec une sérénité nouvelle.
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar"><span>CL</span></div>
+            <div>
+              <p class="testimonial-card__name">Camille L.</p>
+              <p class="testimonial-card__role">Directrice marketing, 34 ans</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <span class="testimonial-card__quote">"</span>
+          <div class="testimonial-card__stars">
+            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+          </div>
+          <p class="testimonial-card__text">
+            La retraite bien-être a été un tournant dans ma vie. J'y suis arrivée
+            épuisée, perdue, et j'en suis repartie avec une clarté que je n'avais
+            jamais ressentie. Sofia crée un cocon où la transformation opère.
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar"><span>MR</span></div>
+            <div>
+              <p class="testimonial-card__name">Marie R.</p>
+              <p class="testimonial-card__role">Entrepreneure, 41 ans</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <span class="testimonial-card__quote">"</span>
+          <div class="testimonial-card__stars">
+            <i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i>
+          </div>
+          <p class="testimonial-card__text">
+            Le programme groupe m'a offert bien plus qu'un accompagnement :
+            une vraie sororité. Guidée par Sofia, j'ai enfin osé quitter un job
+            qui me vidait pour lancer le projet qui me fait vibrer.
+          </p>
+          <div class="testimonial-card__author">
+            <div class="testimonial-card__avatar"><span>AL</span></div>
+            <div>
+              <p class="testimonial-card__name">Amira L.</p>
+              <p class="testimonial-card__role">Designeuse freelance, 29 ans</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       COMMENT ÇA MARCHE — 3 étapes
+       ============================================================ -->
+  <section class="section section--surface" id="steps">
+    <div class="container">
+      <div class="text-center">
+        <span class="section__tag reveal">Processus</span>
+        <h2 class="section__title reveal">Comment ça marche</h2>
+        <p class="section__subtitle reveal">Trois étapes simples pour commencer ta transformation.</p>
+      </div>
+
+      <div class="steps__grid">
+        <div class="step-card reveal">
+          <div class="step-card__number">1</div>
+          <h3 class="step-card__title">Prise de contact</h3>
+          <p class="step-card__text">
+            Remplis le formulaire ci-dessous. Je te réponds personnellement sous 24h.
+          </p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-card__number">2</div>
+          <h3 class="step-card__title">Appel découverte</h3>
+          <p class="step-card__text">
+            On échange 30 minutes gratuitement pour comprendre tes besoins.
+          </p>
+        </div>
+        <div class="step-card reveal">
+          <div class="step-card__number">3</div>
+          <h3 class="step-card__title">Début du voyage</h3>
+          <p class="step-card__text">
+            On construit ton programme personnalisé et ta transformation commence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FORMULAIRE DE CONTACT
+       Labels flottants animés + bouton shimmer.
+       Envoi vers Supabase table "leads".
+       ============================================================ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="text-center">
+        <span class="section__tag reveal">Contact</span>
+        <h2 class="section__title reveal">Prête à te révéler ?</h2>
+        <p class="section__subtitle reveal">
+          Fais le premier pas. Écris-moi et je te recontacte
+          pour un échange gratuit et sans engagement.
+        </p>
+      </div>
+
+      <div class="contact__form-wrapper reveal">
+        <form id="contact-form" novalidate>
+
+          <div class="form__group">
+            <input type="text" id="nom" name="nom" class="form__input" placeholder=" " required>
+            <label for="nom" class="form__label">Ton prénom & nom</label>
+            <p class="form__error" id="nom-error">Merci d'indiquer ton nom.</p>
+          </div>
+
+          <div class="form__group">
+            <input type="email" id="email" name="email" class="form__input" placeholder=" " required>
+            <label for="email" class="form__label">Ton adresse email</label>
+            <p class="form__error" id="email-error">Merci d'indiquer un email valide.</p>
+          </div>
+
+          <div class="form__group">
+            <textarea id="message" name="message" class="form__textarea" placeholder=" "></textarea>
+            <label for="message" class="form__label form__label--textarea">Ton message (optionnel)</label>
+          </div>
+
+          <button type="submit" class="form__submit" id="submit-btn">
+            <i data-lucide="send"></i>&nbsp;&nbsp;Envoyer mon message
+          </button>
+
+          <div class="form__message form__message--success" id="form-success">
+            <strong>Message envoyé !</strong> Merci pour ta confiance. Je te recontacte très vite.
+          </div>
+          <div class="form__message form__message--error" id="form-error">
+            <strong>Oups !</strong> Une erreur est survenue. Réessaie ou écris-moi directement.
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#" class="footer__logo">Sofia Laurent</a>
+      <div class="footer__links">
+        <a href="#" class="footer__link">Mentions légales</a>
+        <a href="#" class="footer__link">Politique de confidentialité</a>
+      </div>
+      <div class="footer__socials">
+        <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="#" class="footer__social" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+      </div>
+      <p class="footer__copy">&copy; 2026 Sofia Laurent. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="js/supabase.js"></script>
+  <script src="js/contact.js"></script>
+  <script src="js/main.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', function(){ lucide.createIcons(); });</script>
+
+</body>
+</html>
