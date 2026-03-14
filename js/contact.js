@@ -26,7 +26,7 @@
    déclencher des automatisations (ex : envoi d'email
    de confirmation, notification Slack, ajout CRM…).
    -------------------------------------------------------- */
-var N8N_WEBHOOK_URL = 'https://nickfran.app.n8n.cloud/webhook-test/c2fe4f61-3a45-4744-94f4-6cf0b04004e0';
+var N8N_WEBHOOK_URL = 'https://nickfran.app.n8n.cloud/webhook/sofia-lead';
 
 document.addEventListener('DOMContentLoaded', function () {
 
