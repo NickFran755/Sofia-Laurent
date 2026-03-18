@@ -232,10 +232,12 @@ document.addEventListener('DOMContentLoaded', function () {
       if (data.reply) {
         addBotMessage(data.reply);
       } else if (data.error) {
-        addBotMessage('D\u00e9sol\u00e9e, je rencontre un probl\u00e8me technique. Contacte Sofia directement via le formulaire ci-dessous ! \uD83D\uDE4F');
+        console.warn('[Chatbot] Erreur API:', data.error);
+        addBotMessage('D\u00e9sol\u00e9e, je rencontre un petit souci technique. N\'h\u00e9site pas \u00e0 contacter Sofia directement via le formulaire ci-dessous ! \uD83D\uDE4F');
       }
     })
-    .catch(function () {
+    .catch(function (err) {
+      console.error('[Chatbot] Erreur réseau:', err);
       if (typing && typing.parentNode) typing.remove();
       addBotMessage('Oups, impossible de me connecter pour le moment. Essaie de nouveau dans quelques instants. \uD83D\uDE0A');
     })
